@@ -3,7 +3,8 @@ import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'; // Import the CSS
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Grid, Card, CardMedia, CardActions, CardContent, Typography, Button } from '@mui/material';
+
 
 const slideImages = [
     {
@@ -32,6 +33,28 @@ const galleryImages = [
     // More images...
 ];
 
+const seva = [
+    {
+        title: 'Ganesh Puja',
+        image: 'path_to_ganesh_puja_image',
+        description: 'Description of Ganesh Puja...',
+        // Add more properties if needed
+    },
+    {
+        title: 'Ganesh Puja',
+        image: 'path_to_ganesh_puja_image',
+        description: 'Description of Ganesh Puja...',
+        // Add more properties if needed
+    },
+    {
+        title: 'Ganesh Puja',
+        image: 'path_to_ganesh_puja_image',
+        description: 'Description of Ganesh Puja...',
+        // Add more properties if needed
+    },
+    // ... other puja items
+];
+
 const Home = () => {
 
     return (
@@ -57,10 +80,12 @@ const Home = () => {
                 ))}
             </Slide>
             <br />
+
             {/* Photo Gallery Section */}
-            <h2 style={{ textAlign: 'center' }}>Photo Gallery</h2>
+            <h2 style={{ textAlign: 'center', paddingTop: '64px' }} id="gallary">Photo Gallery</h2>
+
             {/* Photo Gallery Section */}
-            <Grid container spacing={2}>
+            <Grid container spacing={2} >
                 {galleryImages.map((image, index) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                         <Card>
@@ -76,7 +101,7 @@ const Home = () => {
                 ))}
             </Grid>
             <section className="description-section">
-                <h2 style={{ textAlign: 'center' }}>Description</h2>
+                <h2 style={{ textAlign: 'center', paddingTop: '64px' }}>Description</h2>
                 <p>
                     Welcome to our website! We specialize in providing top-notch services and products.
                     Our commitment to quality and customer satisfaction sets us apart from the competition.
@@ -84,35 +109,45 @@ const Home = () => {
                 </p>
             </section>
 
-            <div>
-                {/* Google Map */}
-                <div id="maps" style={{ display: 'flex' }}>
-                    {/* Left part (map) */}
-                    <div style={{ flex: 1 }}>
-                        <LoadScript googleMapsApiKey="YOUR_API_KEY">
-                            <GoogleMap
-                                mapContainerStyle={{ height: '400px', width: '100%' }}
-                                center={{ lat: 37.7749, lng: -122.4194 }} // Set your initial map center
-                                zoom={10} // Set your desired zoom level
-                            >
-                                <Marker position={{ lat: 37.7749, lng: -122.4194 }} /> {/* Add a marker */}
-                                {/* Customize your map here */}
-                            </GoogleMap>
-                        </LoadScript>
-                    </div>
+            {/* Puja Section */}
+            <section id="puja-section" style={{ padding: '20px' }}>
+                <h2 style={{ textAlign: 'center', paddingTop: '64px' }} id='seva'>Seva's</h2>
+                <Grid container spacing={2}>
+                    {seva.map((puja, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <Card>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={puja.image}
+                                    alt={puja.title}
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        {puja.title}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {puja.description}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    {/* <Button size="small" variant="contained" color="primary">
+                                        Book Now
+                                    </Button> */}
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </section>
 
-                    {/* Right part (address) */}
-                    <div id="address" style={{ flex: 1, padding: '20px', textAlign: 'center' }}>
-                        <h2>Our Address</h2>
-                        <p>123 Main Street</p>
-                        <p>City, State ZIP</p>
-                    </div>
-                </div>
-            </div>
+            {/* ... other sections */}
 
-            <div id="about-us">
+
+
+            <div id="about-us" >
                 {/* About Us Section */}
-                <section >
+                <section style={{ paddingTop: '64px' }}>
                     <h2>About Us</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -123,11 +158,34 @@ const Home = () => {
 
             <div>
                 {/* Contact Us Section */}
-                <section id="contact-us">
+                <section id="contact-us" style={{ paddingTop: '64px' }}>
                     <h2>Contact Us</h2>
-                    <p>Email: contact@example.com</p>
-                    <p>Phone: +1 123-456-7890</p>
-                    {/* Add a contact form or other details */}
+
+                    <div>
+                        {/* Google Map */}
+                        <div id="maps" style={{ display: 'flex'}}>
+                            {/* Left part (map) */}
+                            <div style={{ flex: 1 }}>
+                                <LoadScript googleMapsApiKey="YOUR_API_KEY">
+                                    <GoogleMap
+                                        mapContainerStyle={{ height: '400px', width: '100%' }}
+                                        center={{ lat: 37.7749, lng: -122.4194 }} // Set your initial map center
+                                        zoom={10} // Set your desired zoom level
+                                    >
+                                        <Marker position={{ lat: 37.7749, lng: -122.4194 }} /> {/* Add a marker */}
+                                        {/* Customize your map here */}
+                                    </GoogleMap>
+                                </LoadScript>
+                            </div>
+
+                            {/* Right part (address) */}
+                            <div id="address" style={{ flex: 1, padding: '20px', textAlign: 'center', paddingTop: '64px' }}>
+                                <h2>Address</h2>
+                                <p>123 Main Street</p>
+                                <p>City, State ZIP</p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 {/* Other content */}
             </div>

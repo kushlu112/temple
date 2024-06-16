@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 
 const Footer = () => {
   return (
-    <AppBar position="static" color="primary" style={{backgroundColor:'#FC9601'}}>
+    <AppBar position="static" color="inherit" style={{backgroundColor:'white'}}>
       <Toolbar>
         <Typography variant="body2" >
           © {new Date().getFullYear()} Temple App
